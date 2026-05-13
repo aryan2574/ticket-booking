@@ -37,6 +37,10 @@ public class TrainService {
         this.trainList = updatedList;
     }
 
+    public List<Train> getAllTrains() {
+        return trainList;
+    }
+
     public int[] bookASeat(Train train) throws IOException {
         try {
             for (int row = 0; row < train.getSeats().size(); row++) {
