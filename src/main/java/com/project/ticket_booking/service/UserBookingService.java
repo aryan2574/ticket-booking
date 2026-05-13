@@ -1,12 +1,36 @@
 package com.project.ticket_booking.service;
 
 import com.project.ticket_booking.entity.User;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 public class UserBookingService {
 
     private User user;
 
-    public UserBookingService(User user) {
+    private List<User> userList;
+
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    private static final String USERS_PATH = "app/src/main/java/ticket-booking/localDb/users.json";
+
+    public UserBookingService(User user) throws IOException
+    {
         this.user = user;
+        File users = new File(USERS_PATH);
+
+        userList = objectMapper.readValue(users, new TypeReference<List<User>>() {});
+    }
+
+    public Boolean loginUser() {
+        Optional<User> foundUser = userList.stream().filter(user1 -> {
+            return user1.getName().equals(user.getName()) && UserServiceUtil.checkPassowrd(user.getPassword(), )
+        }).findFirst();
+        return foundUser.isPresent();
     }
 }
