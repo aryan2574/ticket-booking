@@ -1,13 +1,19 @@
 package com.project.ticket_booking.entity;
 
-import java.sql.Time;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 import java.util.Map;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Train {
- private String trainId;
- private String trainNo;
- private List<List<Integer>> seats;
- private Map<String, Time> stationTimes;
- private List<String> stations;
+    private String id;
+    private String number;
+    private List<List<Integer>> seats;
+    private Map<String, String> stationTimes;
+    private List<String> stations;
 }
