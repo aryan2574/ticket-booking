@@ -1,6 +1,6 @@
 [
   {
-    "id" : "user1",
+    "username" : "user1",
     "name" : "John Doe",
     "hashedPassword" : "xxxxxxxx",
     "ticketsBooked" : []
